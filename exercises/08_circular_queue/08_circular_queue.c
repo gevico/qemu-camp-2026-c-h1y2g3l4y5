@@ -17,10 +17,11 @@ typedef struct {
 
 int main() {
     Queue q;
-    int total_people=10;
-    int report_interval=3;
+    int total_people=50;
+    int report_interval=5;
 
     // TODO: 在这里添加你的代码
+    int eliminated_count = 0;
     q.head = 0;
     q.tail = 0;
     q.count = 0;
@@ -40,14 +41,17 @@ int main() {
         while(q.data[q.head].id == 0){
             q.head = (q.head+1)%total_people;
         }
+        printf("淘汰: %d\n", q.data[q.head].id);
         q.data[q.head].id = 0;
         q.head = (q.head+1)%total_people;
         q.count--;
+        eliminated_count++;
     }
     while(q.data[q.head].id == 0){
         q.head = (q.head+1)%total_people;
     }
-    printf("最后剩下的人是: %d\n", q.data[q.head].id);
 
+    printf("总共淘汰了: %d\n", eliminated_count);
+    printf("最后剩下的人是: %d\n", q.data[q.head].id);
     return 0;
 }
