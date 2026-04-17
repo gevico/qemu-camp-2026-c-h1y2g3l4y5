@@ -31,6 +31,7 @@ int binary_search(const char *target_name) {
     return -1;
 }
 
+
 int main(void) {
     // 打开文件读取已排序的学生信息
     FILE *file = fopen("05_students.txt", "r");
