@@ -14,6 +14,7 @@ typedef struct {
     int count;
 } Queue;
 
+
 int main() {
     Queue q;
     int total_people=10;
