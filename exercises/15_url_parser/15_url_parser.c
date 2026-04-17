@@ -3,6 +3,25 @@
 #include <string.h>
 #include <errno.h>
 
+char* my_strdup(const char *s) {
+    if (s == NULL) {
+        return NULL;
+    }
+    
+    // 计算包含末尾 '\0' 的总长度
+    size_t len = strlen(s) + 1; 
+    
+    // 申请内存
+    char *duplicate = (char *)malloc(len);
+    
+    // 内存申请成功则进行精确拷贝
+    if (duplicate != NULL) {
+        memcpy(duplicate, s, len); 
+    }
+    
+    return duplicate;
+}
+
 /**
  * URL参数解析器
  * 输入：包含http/https超链接的字符串
@@ -23,8 +42,9 @@ int parse_url(const char* url) {
         err = -1;
         goto exit;
     }
-    // 复制参数字符串
-    char *params = strdup(question_mark + 1);
+    // 复制参数字符串】
+
+    char *params = my_strdup(question_mark + 1);
     if (params == NULL) {
         err = -1;
         goto exit;
@@ -42,7 +62,7 @@ int parse_url(const char* url) {
             char *value = equals + 1;
             
             // 输出键值对
-            printf("%s = %s\n", key, value);
+            printf("key = %s, value = %s\n", key, value);
         } else {
             // 没有 = 的参数，只有键没有值
             printf("%s = \n", token);
