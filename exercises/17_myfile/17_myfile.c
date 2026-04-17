@@ -9,10 +9,10 @@ void print_elf_type(uint16_t e_type) {
   const char *type_str;
   switch (e_type) {
     // TODO: 在这里添加你的代码
-    case ET_NONE: type_str = "NONE (未知类型)"; break;
-    case ET_REL:  type_str = "REL (可重定位文件，通常是 .o 文件)"; break;
-    case ET_EXEC: type_str = "EXEC (可执行文件)"; break;
-    case ET_DYN:  type_str = "DYN (共享目标文件，如 .so 或 PIE 可执行文件)"; break;
+    case ET_NONE: type_str = "Unknown"; break;
+    case ET_REL:  type_str = "Relocatable"; break;
+    case ET_EXEC: type_str = "Executable"; break;
+    case ET_DYN:  type_str = "Shared Object/PIE"; break;
     case ET_CORE: type_str = "CORE (核心转储文件)"; break;
     default:      type_str = "处理器特定或未知类型"; break;
   }
