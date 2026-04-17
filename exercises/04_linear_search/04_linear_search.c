@@ -19,7 +19,7 @@ int linear_search(const char *target_name) {
             return i;
         }
     }
-    
+    return -1;
 }
 
 int main(void) {
